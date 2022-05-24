@@ -24,5 +24,14 @@ public class UserDetails {
             return pattern.matcher(lastName).matches();
         };
         System.out.println(validateLastName.validate("Madney"));
+
+        UserInterface validateEmail = (email) -> {
+            if (email.isEmpty()) {
+                throw new CustomException("Invalid input");
+            }
+            Pattern pattern = Pattern.compile("^[a-zA-Z]+[.][A-Za-z]+@[a-zA-Z]+[.]+[a-zA-Z]{2}+[.][A-Za-z]{2}+$");
+            return pattern.matcher(email).matches();
+        };
+        System.out.println(validateEmail.validate("Abc.123@gmail.com"));
     }
 }
